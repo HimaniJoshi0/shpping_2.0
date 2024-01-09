@@ -24,6 +24,12 @@ async function fetchData(){
 const addCartdata = (item) => {
   const localCartdata = localStorage.getItem("setlocalCartdata");
   const storedData = localCartdata ? JSON.parse(localCartdata) : [];
+  console.log(storedData)
+  
+  if (!Array.isArray(storedData)) {
+    console.error("Data in local storage is not an array.");
+    return;
+  }
 
   const isItemInCart = storedData.some((cartItem) => cartItem.id === item.id);
 
@@ -46,6 +52,7 @@ useEffect(()=>{
   fetchData();
   const localCartdata =localStorage.getItem("setlocalCartdata");
   const storedData = localCartdata ? JSON.parse(localCartdata) : [];
+    console.log("Stored data in localstorage")
     setCartdata(storedData);
 },[])
 
