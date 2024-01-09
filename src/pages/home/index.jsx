@@ -1,0 +1,59 @@
+import React, {useEffect, useState} from 'react'
+import Items from '../../components/items';
+import "./index.css"
+
+
+const Home = () => {
+  const[apidata, setApiData] = useState([])
+  const[cartdata, setCartdata] = useState([])
+  
+
+async function fetchData(){
+    try{
+         const response = await fetch("https://fakestoreapi.com/products");
+         const data= await response.json();
+         console.log(data)
+         setApiData(data)
+
+    }
+    catch{
+        console.log("error in fetching data")
+    }
+}
+
+const addCartdata = (item) => {
+  const localCartdata = localStorage.getItem("setlocalCartdata");
+  const storedData = localCartdata ? JSON.parse(localCartdata) : [];
+
+  const isItemInCart = storedData.some((cartItem) => cartItem.id === item.id);
+
+  if (!isItemInCart) {
+    const updatedData = [...storedData, item];
+    localStorage.setItem("setlocalCartdata", JSON.stringify(updatedData));
+    setCartdata(updatedData);
+  } else {
+    console.log("Item already exists in the cart");
+  }
+};
+
+const showitems=(item)=>{
+   return(
+    <Items item={item} button="ADD TO CART" addCartdata={()=>{addCartdata(item)}}/> 
+   )    
+}
+
+useEffect(()=>{
+  fetchData();
+  const localCartdata =localStorage.getItem("setlocalCartdata");
+  const storedData = localCartdata ? JSON.parse(localCartdata) : [];
+    setCartdata(storedData);
+},[])
+
+return (
+<div className='container'>
+ {apidata && apidata.map(showitems)}
+</div>
+)
+}
+
+export default Home
