@@ -6,17 +6,19 @@ const Items = ({item, addCartdata=()=>{ }, button}) => {
    return(
     <>
      <div className="item" key={item.id}>
-      <div>
 
-        <div className='img_title'>
+        <div className='image-title'>
         <div className='image'>
         <img src={item.image} alt="Product" className='img'/>
         </div>
-        <h3>{item.title}</h3>
+        <div>
+          <h3>{item.title}</h3>
+          </div>
+        
         </div>
       
-        <div >
-          <p >
+        <div>
+          <p className="description">
             <b>Description:</b> {item.description}
           </p>
           <p>
@@ -28,12 +30,9 @@ const Items = ({item, addCartdata=()=>{ }, button}) => {
         </div>
 
         <div className="btn">
-        <button onClick={() => addCartdata(item)}>{button}</button>
-      </div>
-
+        <button onClick={addCartdata.bind(this,item)}>{button}</button>
       </div>
     </div>
-    
     </>
    )
 

@@ -2,7 +2,7 @@ import React from 'react'
 import "./App.css"
 import Cart from './pages/cart' 
 import Home from './pages/home'
-import Nav from './components/items/navbar'
+import Nav from './components/navbar'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
