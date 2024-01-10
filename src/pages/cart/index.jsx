@@ -9,6 +9,7 @@ const Cart = () => {
    useEffect(()=>{
     const localCartdata = JSON.parse(localStorage.getItem("setlocalCartdata"));
     console.log("data in localstorage", localCartdata)
+    console.log("hello beboooo...")
     setCartdata(localCartdata);
    },[])
 
