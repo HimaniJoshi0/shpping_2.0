@@ -1,5 +1,5 @@
 import React  from 'react'
-import "../items/index.css"
+import "../items/style.css"
 
 
 const Items = ({item, addCartdata=()=>{ }, button}) => {
@@ -11,26 +11,23 @@ const Items = ({item, addCartdata=()=>{ }, button}) => {
         <div className='image'>
         <img src={item.image} alt="Product" className='img'/>
         </div>
-        <div>
-          <h3>{item.title}</h3>
+          <div className='title_div'>
+           <h3 className='title'>{item.title}</h3>
           </div>
-        
         </div>
       
-        <div>
-          <p className="description">
-            <b>Description:</b> {item.description}
+        <div className='price_rating'>
+      
+          <p>
+            <b>$</b> {item.price}
           </p>
           <p>
-            <b>Price:</b> {item.price}
-          </p>
-          <p>
-            <b>Rating:</b> {item.rating.rate}
+            <b><i class="fa-solid fa-star icon_clr"></i></b> {item.rating.rate}
           </p>
         </div>
 
         <div className="btn">
-        <button onClick={addCartdata.bind(this,item)}>{button}</button>
+        <button onClick={addCartdata.bind(this,item)}><i class="fa-solid fa-cart-shopping"></i>  {button}</button>
       </div>
     </div>
     </>

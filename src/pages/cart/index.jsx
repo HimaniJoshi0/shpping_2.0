@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Items from '../../components/items'
-import "./index.css"
+import "./style.css"
 
 const Cart = () => {
   const[cartdata, setCartdata] = useState([])
@@ -21,6 +21,8 @@ const Cart = () => {
   return (
     <div className='container'>
       {cartdata && cartdata.map(showCartItems)}
+      <div>
+      </div>
     </div>
   )
 }
