@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Items from '../../components/items';
-import "./index.css"
+import "./style.css"
 
 
 const Home = () => {
